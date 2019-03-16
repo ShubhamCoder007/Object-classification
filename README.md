@@ -25,3 +25,14 @@ and then start detecting the objects.
 The result of the objects would be shown in the Text area, and some of the raw computations and model descriptions would appear in
 the terminal.
 
+>>> Create a dataset directory, and training_set, test_set sub directories before executing the program. 
+8 capture sessions should be there in total. If you want more, be sure to change here:
+
+self.classifier.fit_generator(training_set,
+								 steps_per_epoch = self.compute_files()*64,  ---> 8*n
+								 epochs = 2,
+								 validation_data = test_set,
+								 validation_steps = self.compute_files()*16)  ---> 2*n
+                 
+                 
+  >>>  n is the number of capture sessions for different objects.
